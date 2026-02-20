@@ -1,6 +1,5 @@
-
-//COPY THE BLACKBOX, there is no need to change anything in it.
-//Check the main function at bottom for USAGE
+#include <bits/stdc++.h>
+using namespace std;
 
 //****************BLACKBOX START*****************
 //START COPYING FROM HERE
@@ -170,3 +169,29 @@ class BFS {
 };
 //END COPYING HERE
 //********************BLACKBOX END******************
+
+
+//********************MAIN (USAGE)********************
+int main() {
+    Graph g(10, true);
+
+    g.add_edge(1, 2);
+    g.add_edge(2, 3);
+    g.add_edge(3, 4);
+
+    g.add_edge({10, 20}, {20, 30});
+    g.add_edge({1, 2, 3}, {4, 5, 6});
+
+    BFS bfs(&g);
+
+    bfs.run(1);
+    cout << bfs.min_dist(4) << "\n";
+
+    bfs.run({10, 20});
+    cout << bfs.is_visited({20, 30}) << "\n";
+
+    bfs.run({1, 2, 3});
+    cout << bfs.min_dist({4, 5, 6}) << "\n";
+
+    return 0;
+}
